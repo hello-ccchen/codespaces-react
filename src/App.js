@@ -5,7 +5,13 @@ function App() {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
+    console.log("componentDidMount");
+  }, []);
+
+  useEffect(() => {
+    console.group("componentDidUpdate");
     console.log("count updated", count);
+    console.groupEnd();
   }, [count]);
 
   const onAddCountClick = () => {
