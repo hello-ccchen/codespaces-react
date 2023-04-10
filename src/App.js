@@ -1,27 +1,33 @@
-import './App.css';
+import { useEffect, useState } from "react";
+import "./App.css";
 
 function App() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    console.log("count updated", count);
+  }, [count]);
+
+  const onAddCountClick = () => {
+    setCount((prevscount) => prevscount + 1);
+  };
+
+  const onMinusCountClick = () => {
+    setCount((prevscount) => prevscount - 1);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src="Octocat.png" className="App-logo" alt="logo" />
-        <p>
-          GitHub Codespaces <span className="heart">♥️</span> React
-        </p>
-        <p className="small">
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </p>
-      </header>
+    <div className="container">
+      <h3>Hello React Counter</h3>
+      <h1>{count}</h1>
+      <div className="button-grp">
+        <button className="button" onClick={onAddCountClick}>
+          +
+        </button>
+        <button className="button" onClick={onMinusCountClick}>
+          -
+        </button>
+      </div>
     </div>
   );
 }
